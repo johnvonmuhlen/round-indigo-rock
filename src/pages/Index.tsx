@@ -3,6 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Phone, ChevronDown, ChevronUp, CheckCircle, Star, Users, Image, Globe, MessageCircle, Menu, X, Zap, Layers, Sticker, Layout, FileText, Monitor } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+const INDIGO = "indigo-600";
+const INDIGO_HOVER = "indigo-700";
+const INDIGO_TEXT = "text-indigo-600";
+const INDIGO_BG = "bg-indigo-600";
+const INDIGO_BG_HOVER = "hover:bg-indigo-700";
+const INDIGO_BORDER = "border-indigo-600";
+const INDIGO_RING = "focus:ring-indigo-500";
+
 const WHATSAPP_NUMBER = "5491123456789";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Round%20Indigo%20Rock%2C%20quiero%20un%20presupuesto`;
 const EMAIL = "hola@roundindigorock.com";
@@ -199,14 +207,14 @@ export default function Index() {
         <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
           <a href="#home" className="flex items-center gap-2 font-bold text-xl tracking-tight text-black">
             <span className="rounded bg-black text-white px-2 py-1">Round</span>
-            <span className="text-orange-500">Indigo Rock</span>
+            <span className="text-indigo-600">Indigo Rock</span>
           </a>
           <nav className="hidden md:flex gap-4 text-sm font-medium">
-            <a href="#home" className="hover:text-orange-500 transition-colors">Home</a>
-            <a href="#about" className="hover:text-orange-500 transition-colors">Sobre nosotros</a>
-            <a href="#servicios" className="hover:text-orange-500 transition-colors">Servicios</a>
-            <a href="#trabajos" className="hover:text-orange-500 transition-colors">Trabajos</a>
-            <a href="#contacto" className="hover:text-orange-500 transition-colors">Contacto</a>
+            <a href="#home" className="hover:text-indigo-600 transition-colors">Home</a>
+            <a href="#about" className="hover:text-indigo-600 transition-colors">Sobre nosotros</a>
+            <a href="#servicios" className="hover:text-indigo-600 transition-colors">Servicios</a>
+            <a href="#trabajos" className="hover:text-indigo-600 transition-colors">Trabajos</a>
+            <a href="#contacto" className="hover:text-indigo-600 transition-colors">Contacto</a>
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="text-green-600 hover:text-green-700 flex items-center gap-1">
               <MessageCircle size={18} /> WhatsApp
             </a>
@@ -255,7 +263,7 @@ export default function Index() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              className="bg-orange-500 hover:bg-orange-600 text-white shadow-lg rounded-lg px-8 py-3 text-lg font-semibold"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg rounded-lg px-8 py-3 text-lg font-semibold"
               onClick={() => scrollToId("contacto")}
             >
               Pedir presupuesto
@@ -279,16 +287,16 @@ export default function Index() {
             Más de 10 años de experiencia en impresión y montaje OOH. Entregas rápidas, instalación segura y cobertura en CABA. Nos eligen por nuestra atención personalizada y resultados que destacan.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            <li className="flex items-center gap-2"><CheckCircle className="text-orange-500" /> Materiales de calidad</li>
-            <li className="flex items-center gap-2"><CheckCircle className="text-orange-500" /> Acabados prolijos</li>
-            <li className="flex items-center gap-2"><CheckCircle className="text-orange-500" /> Entregas en tiempo</li>
-            <li className="flex items-center gap-2"><CheckCircle className="text-orange-500" /> Soporte post-instalación</li>
+            <li className="flex items-center gap-2"><CheckCircle className="text-indigo-600" /> Materiales de calidad</li>
+            <li className="flex items-center gap-2"><CheckCircle className="text-indigo-600" /> Acabados prolijos</li>
+            <li className="flex items-center gap-2"><CheckCircle className="text-indigo-600" /> Entregas en tiempo</li>
+            <li className="flex items-center gap-2"><CheckCircle className="text-indigo-600" /> Soporte post-instalación</li>
           </ul>
           <div className="flex flex-col md:flex-row gap-4 mt-4">
             {TESTIMONIALS.map((t) => (
               <div key={t.name} className="flex-1 bg-gray-50 border border-gray-200 rounded-lg p-4 shadow-sm">
                 <div className="flex items-center gap-2 mb-2">
-                  <Star className="text-yellow-400" size={18} />
+                  <Star className="text-indigo-500" size={18} />
                   <span className="font-semibold">{t.name}</span>
                 </div>
                 <p className="text-gray-700 text-sm italic">"{t.text}"</p>
@@ -305,12 +313,12 @@ export default function Index() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {SERVICES.map((s) => (
               <div key={s.title} className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center hover:shadow-lg transition-shadow">
-                <s.icon className="text-orange-500 mb-3" size={40} aria-hidden="true" />
+                <s.icon className="text-indigo-600 mb-3" size={40} aria-hidden="true" />
                 <h3 className="font-bold text-lg mb-2">{s.title}</h3>
                 <ul className="text-gray-700 text-sm space-y-1">
                   {s.bullets.map((b, i) => (
                     <li key={i} className="flex items-center gap-1">
-                      <ChevronRightIcon className="text-blue-500" /> {b}
+                      <ChevronRightIcon className="text-indigo-500" /> {b}
                     </li>
                   ))}
                 </ul>
@@ -328,7 +336,7 @@ export default function Index() {
             <Button
               size="sm"
               variant={cat === null ? "default" : "outline"}
-              className={cat === null ? "bg-orange-500 text-white" : ""}
+              className={cat === null ? "bg-indigo-600 text-white" : ""}
               onClick={() => setCat(null)}
             >
               Todos
@@ -338,7 +346,7 @@ export default function Index() {
                 key={c.key}
                 size="sm"
                 variant={cat === c.key ? "default" : "outline"}
-                className={cat === c.key ? "bg-orange-500 text-white" : ""}
+                className={cat === c.key ? "bg-indigo-600 text-white" : ""}
                 onClick={() => setCat(c.key)}
               >
                 {c.label}
@@ -370,7 +378,7 @@ export default function Index() {
           {!showAll && (
             <div className="flex justify-center mt-6">
               <Button
-                className="bg-blue-600 hover:bg-blue-700 text-white shadow rounded-lg px-6 py-2"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white shadow rounded-lg px-6 py-2"
                 onClick={() => setShowAll(true)}
               >
                 Ver más trabajos <ChevronDown className="ml-2" />
@@ -381,7 +389,7 @@ export default function Index() {
             <div className="flex justify-center mt-4">
               <Button
                 variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg px-6 py-2"
+                className="border-indigo-600 text-indigo-600 hover:bg-indigo-50 rounded-lg px-6 py-2"
                 onClick={() => setShowAll(false)}
               >
                 Ver menos <ChevronUp className="ml-2" />
@@ -412,7 +420,7 @@ export default function Index() {
                 name="nombre"
                 type="text"
                 required
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 autoComplete="name"
               />
               <label className="font-medium text-sm" htmlFor="email">Email</label>
@@ -421,7 +429,7 @@ export default function Index() {
                 name="email"
                 type="email"
                 required
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 autoComplete="email"
               />
               <label className="font-medium text-sm" htmlFor="telefono">Teléfono/WhatsApp</label>
@@ -430,7 +438,7 @@ export default function Index() {
                 name="telefono"
                 type="tel"
                 required
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 autoComplete="tel"
               />
               <label className="font-medium text-sm" htmlFor="mensaje">Mensaje (medidas, tipo de pieza, etc.)</label>
@@ -439,11 +447,11 @@ export default function Index() {
                 name="mensaje"
                 required
                 rows={3}
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               />
               <Button
                 type="submit"
-                className="bg-orange-500 hover:bg-orange-600 text-white shadow rounded-lg px-6 py-2 mt-2"
+                className="bg-indigo-600 hover:bg-indigo-700 text-white shadow rounded-lg px-6 py-2 mt-2"
               >
                 Solicitar propuesta
               </Button>
@@ -454,19 +462,19 @@ export default function Index() {
             {/* Datos de contacto */}
             <div className="flex flex-col gap-4 justify-center">
               <div className="flex items-center gap-2">
-                <Phone className="text-blue-600" />
+                <Phone className="text-indigo-600" />
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener" className="text-lg text-green-600 hover:underline">
                   WhatsApp: +54 9 11 2345-6789
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="text-blue-600" />
-                <a href={`mailto:${EMAIL}`} className="text-lg text-blue-600 hover:underline">
+                <Mail className="text-indigo-600" />
+                <a href={`mailto:${EMAIL}`} className="text-lg text-indigo-600 hover:underline">
                   {EMAIL}
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="text-blue-600" />
+                <MapPin className="text-indigo-600" />
                 <span className="text-lg">{ADDRESS}</span>
               </div>
               <div className="rounded-lg overflow-hidden border border-gray-200 mt-4">
@@ -494,16 +502,16 @@ export default function Index() {
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener" aria-label="WhatsApp" className="hover:text-green-400">
                 <MessageCircle />
               </a>
-              <a href={`mailto:${EMAIL}`} aria-label="Email" className="hover:text-blue-400">
+              <a href={`mailto:${EMAIL}`} aria-label="Email" className="hover:text-indigo-400">
                 <Mail />
               </a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" className="hover:text-pink-400">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" className="hover:text-indigo-300">
                 <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5a5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5zm6 1.25a1 1 0 1 1-2 0a1 1 0 0 1 2 0z"/></svg>
               </a>
             </div>
           </div>
           <div className="text-center md:text-right">
-            <div className="mb-2">¿Proyecto urgente? <a href={WHATSAPP_LINK} className="text-orange-500 underline font-semibold">Escribinos por WhatsApp</a></div>
+            <div className="mb-2">¿Proyecto urgente? <a href={WHATSAPP_LINK} className="text-indigo-400 underline font-semibold">Escribinos por WhatsApp</a></div>
             <div className="text-xs text-gray-400">© {new Date().getFullYear()} Round Indigo Rock. Todos los derechos reservados.</div>
           </div>
         </div>

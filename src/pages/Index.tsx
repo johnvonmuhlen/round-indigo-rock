@@ -13,7 +13,7 @@ const INDIGO_RING = "focus:ring-indigo-500";
 
 const WHATSAPP_NUMBER = "5491123456789";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Round%20Indigo%20Rock%2C%20quiero%20un%20presupuesto`;
-const EMAIL = "hola@roundindigorock.com";
+const EMAIL = "roundindigorock@gmail.com";
 const ADDRESS = "Av. Corrientes 1234, CABA";
 const MAP_EMBED = "https://www.openstreetmap.org/export/embed.html?bbox=-58.4100,-34.6037,-58.3700,-34.5837&layer=mapnik&marker=-34.5937,-58.3900";
 const CATEGORIES = [

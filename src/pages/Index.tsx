@@ -270,7 +270,7 @@ export default function Index() {
             </Button>
             <Button
               variant="outline"
-              className="border-indigo-300 text-indigo-300 hover:bg-indigo-700 hover:text-indigo-300 shadow-lg rounded-lg px-8 py-3 text-lg font-semibold"
+              className="border-indigo-300 text-indigo-300 hover:bg-indigo-700 shadow-lg rounded-lg px-8 py-3 text-lg font-semibold"
               onClick={() => scrollToId("trabajos")}
             >
               Ver trabajos

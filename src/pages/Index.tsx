@@ -11,7 +11,7 @@ const INDIGO_BG_HOVER = "hover:bg-indigo-700";
 const INDIGO_BORDER = "border-indigo-600";
 const INDIGO_RING = "focus:ring-indigo-500";
 
-const WHATSAPP_NUMBER = "5492722";
+const WHATSAPP_NUMBER = "54927227731";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Round%20Indigo%20Rock%2C%20quiero%20un%20presupuesto`;
 const EMAIL = "roundindigorock@gmail.com";
 const ADDRESS = "Av. Corrientes 1234, CABA";
@@ -270,7 +270,7 @@ export default function Index() {
             </Button>
             <Button
               variant="outline"
-              className="border-indigo-300 text-indigo-300 hover:bg-indigo-900 hover:bg-opacity-20 hover:text-indigo-300 shadow-lg rounded-lg px-8 py-3 text-lg font-semibold"
+              className="border-indigo-300 text-indigo-300 hover:bg-indigo-700 hover:text-indigo-300 shadow-lg rounded-lg px-8 py-3 text-lg font-semibold"
               onClick={() => scrollToId("trabajos")}
             >
               Ver trabajos

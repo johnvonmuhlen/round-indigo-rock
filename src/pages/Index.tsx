@@ -11,7 +11,7 @@ const INDIGO_BG_HOVER = "hover:bg-indigo-700";
 const INDIGO_BORDER = "border-indigo-600";
 const INDIGO_RING = "focus:ring-indigo-500";
 
-const WHATSAPP_NUMBER = "5491123456789";
+const WHATSAPP_NUMBER = "5492722";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Round%20Indigo%20Rock%2C%20quiero%20un%20presupuesto`;
 const EMAIL = "roundindigorock@gmail.com";
 const ADDRESS = "Av. Corrientes 1234, CABA";

@@ -2,22 +2,15 @@ import { useRef, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Mail,
-  MapPin,
   Phone,
+  MessageCircle,
   ChevronDown,
   ChevronUp,
   CheckCircle,
   Star,
-  Users,
-  Image,
-  Globe,
-  MessageCircle,
-  Menu,
-  X,
-  Zap,
   Layers,
   Sticker,
-  Layout,
+  Zap,
   FileText,
   Monitor,
 } from "lucide-react";
@@ -60,7 +53,7 @@ const SERVICES = [
     bullets: ["Corte personalizado", "Adhesivo duradero", "Colocación prolija"],
   },
   {
-    icon: Layout,
+    icon: FileText,
     title: "Cercos de obra",
     bullets: ["Gran formato", "Montaje seguro", "Visibilidad máxima"],
   },
@@ -533,10 +526,10 @@ export default function Index() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black text-center">
             Contacto
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="flex flex-col md:flex-row gap-8">
             {/* Formulario */}
             <form
-              className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col gap-4"
+              className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex-1 flex flex-col gap-4"
               autoComplete="off"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -599,9 +592,9 @@ export default function Index() {
               </span>
             </form>
             {/* Datos de contacto */}
-            <div className="flex flex-col gap-4 justify-center">
-              <div className="flex items-center gap-2">
-                <Phone className="text-indigo-600" />
+            <div className="flex-1 flex flex-col justify-center gap-6 bg-white rounded-xl shadow-md border border-gray-200 p-6">
+              <div className="flex items-center gap-3">
+                <Phone className="text-indigo-600" size={24} />
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"
@@ -611,27 +604,14 @@ export default function Index() {
                   WhatsApp: +54 9 11 2345-6789
                 </a>
               </div>
-              <div className="flex items-center gap-2">
-                <Mail className="text-indigo-600" />
+              <div className="flex items-center gap-3">
+                <Mail className="text-indigo-600" size={24} />
                 <a
                   href={`mailto:${EMAIL}`}
                   className="text-lg text-indigo-600 hover:underline"
                 >
                   {EMAIL}
                 </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="text-indigo-600" />
-                <span className="text-lg">{ADDRESS}</span>
-              </div>
-              <div className="rounded-lg overflow-hidden border border-gray-200 mt-4">
-                <iframe
-                  src={MAP_EMBED}
-                  title="Mapa de Buenos Aires"
-                  className="w-full h-40"
-                  loading="lazy"
-                  aria-label="Mapa de Buenos Aires"
-                />
               </div>
             </div>
           </div>

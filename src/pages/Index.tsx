@@ -340,7 +340,7 @@ export default function Index() {
       {/* Hero */}
       <section
         id="home"
-        className="relative min-h-[90vh] flex items-center justify-center bg-black"
+        className="relative min-h-screen flex items-center justify-center bg-black"
       >
         <img
           src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"

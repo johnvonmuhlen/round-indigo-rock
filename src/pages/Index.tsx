@@ -649,7 +649,6 @@ export default function Index() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
             <div className="font-bold text-lg mb-2">Round Indigo Rock</div>
-            <div className="text-sm mb-1">Av. Corrientes 1234, CABA</div>
             <div className="text-sm mb-1">Lunes a Viernes 9 a 18hs</div>
             <div className="flex gap-3 mt-2">
               <a

@@ -78,11 +78,6 @@ const SERVICES = [
       "Diseño incluido",
     ],
   },
-  {
-    icon: Monitor,
-    title: "Desarrollo Web",
-    bullets: ["Sitios modernos", "Optimización SEO", "Soporte técnico"],
-  },
 ];
 const PORTFOLIO = [
   {
@@ -369,8 +364,7 @@ export default function Index() {
             Impresión e instalación OOH que destaca tu marca en la calle
           </h1>
           <p className="text-lg md:text-2xl text-white/90 mb-8 font-medium">
-            Carteles, stickers, cercos de obra, tótems, flyers, folletos y
-            desarrollo web.
+            Carteles, stickers, cercos de obra, tótems, flyers y folletos.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

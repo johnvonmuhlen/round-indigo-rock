@@ -13,6 +13,8 @@ import {
   Zap,
   FileText,
   Monitor,
+  Menu,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

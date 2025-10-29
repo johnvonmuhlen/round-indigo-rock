@@ -594,9 +594,9 @@ export default function Index() {
               </span>
             </form>
             {/* Datos de contacto */}
-            <div className="flex-1 flex flex-col justify-center gap-6 bg-white rounded-xl shadow-md border border-gray-200 p-6">
-              <div className="flex items-center gap-3">
-                <Phone className="text-indigo-600" size={24} />
+            <div className="flex-1 bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col gap-8 justify-center">
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <Phone className="text-indigo-600" size={28} />
                 <a
                   href={WHATSAPP_LINK}
                   target="_blank"
@@ -606,8 +606,8 @@ export default function Index() {
                   WhatsApp: +54 9 11 2345-6789
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <Mail className="text-indigo-600" size={24} />
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <Mail className="text-indigo-600" size={28} />
                 <a
                   href={`mailto:${EMAIL}`}
                   className="text-lg text-indigo-600 hover:underline"

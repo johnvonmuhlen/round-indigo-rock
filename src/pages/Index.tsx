@@ -416,7 +416,10 @@ export default function Index() {
               post-instalación
             </li>
           </ul>
-          <div className="flex flex-col md:flex-row gap-4 mt-4">
+
+          {
+            //TESTIMONIALS section commented out for now
+            /* <div className="flex flex-col md:flex-row gap-4 mt-4">
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.name}
@@ -429,7 +432,8 @@ export default function Index() {
                 <p className="text-gray-700 text-sm italic">"{t.text}"</p>
               </div>
             ))}
-          </div>
+          </div> */
+          }
         </div>
       </section>
 
@@ -594,7 +598,7 @@ export default function Index() {
               </span>
             </form>
             {/* Datos de contacto */}
-            <div className="flex-1 bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col gap-8 justify-center">
+            <div className="flex-1 p-6 flex flex-col gap-8 justify-center">
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <Phone className="text-indigo-600" size={28} />
                 <a
@@ -613,6 +617,26 @@ export default function Index() {
                   className="text-lg text-indigo-600 hover:underline"
                 >
                   {EMAIL}
+                </a>
+              </div>
+              <div className="flex flex-col sm:flex-row items-center gap-4">
+                <svg
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  className="text-indigo-600"
+                  aria-hidden="true"
+                >
+                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1 2.2-2.2 4.6-2.2 4.9 0 5.8 3.2 5.8 7.3V24h-5V15.3c0-2.1 0-4.8-3-4.8-3 0-3.5 2.3-3.5 4.6V24h-5V8z" />
+                </svg>
+                <a
+                  href="https://www.linkedin.com/company/round-indigo-rock"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-lg text-indigo-600 hover:underline"
+                >
+                  LinkedIn
                 </a>
               </div>
             </div>
@@ -645,10 +669,10 @@ export default function Index() {
                 <Mail />
               </a>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.linkedin.com/company/round-indigo-rock"
                 target="_blank"
                 rel="noopener"
-                aria-label="Instagram"
+                aria-label="LinkedIn"
                 className="hover:text-indigo-300"
               >
                 <svg
@@ -656,8 +680,9 @@ export default function Index() {
                   height="22"
                   fill="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
-                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm4.25 3.25a5.25 5.25 0 1 1 0 10.5a5.25 5.25 0 0 1 0-10.5zm0 1.5a3.75 3.75 0 1 0 0 7.5a3.75 3.75 0 0 0 0-7.5zm6 1.25a1 1 0 1 1-2 0a1 1 0 0 1 2 0z" />
+                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1 2.2-2.2 4.6-2.2 4.9 0 5.8 3.2 5.8 7.3V24h-5V15.3c0-2.1 0-4.8-3-4.8-3 0-3.5 2.3-3.5 4.6V24h-5V8z" />
                 </svg>
               </a>
             </div>

@@ -243,8 +243,12 @@ export default function Index() {
             href="#home"
             className="flex items-center gap-2 font-bold text-xl tracking-tight text-black"
           >
-            <span className="rounded bg-black text-white px-2 py-1">Round</span>
-            <span className="text-indigo-600">Indigo Rock</span>
+            <img
+              src="/logo.png"
+              alt="Round Indigo Rock"
+              className="h-10 w-auto"
+            />
+            <span className="sr-only">Round Indigo Rock</span>
           </a>
           <nav className="hidden md:flex gap-4 text-sm font-medium">
             <a href="#home" className="hover:text-indigo-600 transition-colors">
@@ -360,6 +364,12 @@ export default function Index() {
           aria-hidden="true"
         />
         <div className="relative z-10 max-w-2xl mx-auto text-center px-4 py-24">
+          {/* Logo centered above the main headline - place image in public/round-indigo-rock.png */}
+          <img
+            src="/logo.png"
+            alt="Round Indigo Rock logo"
+            className="mx-auto mb-3 w-28 md:w-36 lg:w-44 h-auto object-contain"
+          />
           <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">
             Impresión e instalación OOH que destaca tu marca en la calle
           </h1>

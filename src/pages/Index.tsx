@@ -12,9 +12,11 @@ import {
   Sticker,
   Zap,
   FileText,
-  Monitor,
   Menu,
   X,
+  Building,
+  Fence,
+  InspectionPanel,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -55,12 +57,12 @@ const SERVICES = [
     bullets: ["Corte personalizado", "Adhesivo duradero", "Colocación prolija"],
   },
   {
-    icon: FileText,
+    icon: Fence,
     title: "Cercos de obra",
     bullets: ["Gran formato", "Montaje seguro", "Visibilidad máxima"],
   },
   {
-    icon: Zap,
+    icon: Building,
     title: "Tótems",
     bullets: ["Estructuras robustas", "Diseño a medida", "Alto impacto visual"],
   },
@@ -70,7 +72,7 @@ const SERVICES = [
     bullets: ["Papeles de calidad", "Colores vibrantes", "Entrega rápida"],
   },
   {
-    icon: FileText,
+    icon: InspectionPanel,
     title: "Folletos",
     bullets: [
       "Diferentes pliegos",

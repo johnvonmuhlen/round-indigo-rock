@@ -603,7 +603,7 @@ export default function Index() {
                   rel="noopener"
                   className="text-lg text-green-600 hover:underline"
                 >
-                  WhatsApp: +54 911 2722-7731
+                  WhatsApp: +54 9 11 2722 7731
                 </a>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-4">

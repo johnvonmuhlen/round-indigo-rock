@@ -238,7 +238,7 @@ export default function Index() {
             <img
               src="/logo.png"
               alt="Round Indigo Rock"
-              className="h-10 w-auto"
+              className="h-10 w-auto transform scale-150 origin-center"
             />
             <span className="sr-only">Round Indigo Rock</span>
           </a>
@@ -360,7 +360,7 @@ export default function Index() {
           <img
             src="/logo.png"
             alt="Round Indigo Rock logo"
-            className="mx-auto mb-3 w-28 md:w-36 lg:w-44 h-auto object-contain"
+            className="mx-auto mb-3 w-36 md:w-48 lg:w-64 h-auto object-contain"
           />
           <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-lg">
             Impresión e instalación OOH que destaca tu marca en la calle
@@ -603,7 +603,7 @@ export default function Index() {
                   rel="noopener"
                   className="text-lg text-green-600 hover:underline"
                 >
-                  WhatsApp: +54 9 11 2345-6789
+                  WhatsApp: +54 911 2722-7731
                 </a>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -627,7 +627,7 @@ export default function Index() {
                   <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1 2.2-2.2 4.6-2.2 4.9 0 5.8 3.2 5.8 7.3V24h-5V15.3c0-2.1 0-4.8-3-4.8-3 0-3.5 2.3-3.5 4.6V24h-5V8z" />
                 </svg>
                 <a
-                  href="https://www.linkedin.com/company/round-indigo-rock"
+                  href="https://www.linkedin.com/in/cai-von-m%C3%BChlen-3b55bb11/"
                   target="_blank"
                   rel="noopener"
                   className="text-lg text-indigo-600 hover:underline"
@@ -664,7 +664,7 @@ export default function Index() {
                 <Mail />
               </a>
               <a
-                href="https://www.linkedin.com/company/round-indigo-rock"
+                href="https://www.linkedin.com/in/cai-von-m%C3%BChlen-3b55bb11/"
                 target="_blank"
                 rel="noopener"
                 aria-label="LinkedIn"

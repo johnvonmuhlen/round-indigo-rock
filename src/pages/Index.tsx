@@ -1,5 +1,15 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Mail,
   Phone,
@@ -17,6 +27,8 @@ import {
   Building,
   Fence,
   InspectionPanel,
+  Linkedin,
+  Instagram,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -31,9 +43,7 @@ const INDIGO_RING = "focus:ring-indigo-500";
 const WHATSAPP_NUMBER = "5491127227731";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20Round%20Indigo%20Rock%2C%20quiero%20un%20presupuesto`;
 const EMAIL = "roundindigorock@gmail.com";
-const ADDRESS = "Av. Corrientes 1234, CABA";
-const MAP_EMBED =
-  "https://www.openstreetmap.org/export/embed.html?bbox=-58.4100,-34.6037,-58.3700,-34.5837&layer=mapnik&marker=-34.5937,-58.3900";
+const INSTAGRAM_LINK = "https://www.instagram.com/round_indigo_rock/";
 const CATEGORIES = [
   { label: "Vía pública", key: "publica" },
   { label: "Retail", key: "retail" },
@@ -76,193 +86,192 @@ const SERVICES = [
     ],
   },
 ];
-
 const PORTFOLIO = [
   {
     src: "/2 stickers comun de 400x200cm c_u.jpg",
     alt: "2 stickers comun de 400x200cm",
-    cat: "retail",
+    cat: "stickers",
     desc: "Stickers comun - varios tamaños",
   },
   {
     src: "/3 cartel con marco.jpeg",
     alt: "Cartel con marco",
-    cat: "publica",
+    cat: "lonas",
     desc: "Cartel con marco - muestra de montaje",
   },
   {
     src: "/Cerco de obra 1.jpg",
     alt: "Cerco de obra 1",
-    cat: "publica",
+    cat: "cercos",
     desc: "Cerco de obra",
   },
   {
     src: "/Cerco de obra 2.png",
     alt: "Cerco de obra 2",
-    cat: "publica",
+    cat: "cercos",
     desc: "Cerco de obra",
   },
   {
     src: "/Marco con lona front 1.jpeg",
     alt: "Marco con lona front 1",
-    cat: "publica",
+    cat: "lonas",
     desc: "Marco con lona - frontal",
   },
   {
     src: "/Marco con lona front 2.png",
     alt: "Marco con lona front 2",
-    cat: "publica",
+    cat: "lonas",
     desc: "Marco con lona - frontal",
   },
   {
     src: "/Stand Alone - 200x100cm.jpeg",
     alt: "Stand Alone 200x100cm",
-    cat: "eventos",
+    cat: "stands",
     desc: "Stand Alone - 200x100cm",
   },
   {
     src: "/Stand Alone 1.jpeg",
     alt: "Stand Alone 1",
-    cat: "eventos",
+    cat: "stands",
     desc: "Stand Alone",
   },
   {
     src: "/Stand Alone 2.jpeg",
     alt: "Stand Alone 2",
-    cat: "eventos",
+    cat: "stands",
     desc: "Stand Alone",
   },
   {
     src: "/Sticker 1.jpeg",
     alt: "Sticker 1",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker",
   },
   {
     src: "/Sticker comun 1.jpg",
     alt: "Sticker comun 1",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker comun",
   },
   {
     src: "/Sticker comun.jpeg",
     alt: "Sticker comun",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker comun - vinilo",
   },
   {
     src: "/Sticker microperforado.jpeg",
     alt: "Sticker microperforado",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker microperforado - para vidrieras",
   },
   {
     src: "/Sticker y cartel con marco.jpeg",
     alt: "Sticker y cartel con marco",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker y cartel con marco - combinación",
   },
   {
     src: "/Totem doble faz.jpeg",
     alt: "Totem doble faz",
-    cat: "publica",
+    cat: "stands",
     desc: "Tótem doble faz - alto impacto",
   },
   {
     src: "/Cerco de obra.jpeg",
     alt: "Cerco de obra",
-    cat: "publica",
+    cat: "cercos",
     desc: "Cerco de obra - otra toma",
   },
   {
     src: "/Marco con lona atado con tensores.jpg",
     alt: "Marco con lona atado con tensores",
-    cat: "publica",
+    cat: "lonas",
     desc: "Marco con lona atado con tensores - montaje",
   },
   {
     src: "/Marco con lona en altura.jpeg",
     alt: "Marco con lona en altura",
-    cat: "publica",
+    cat: "lonas",
     desc: "Marco con lona en altura - instalación",
   },
   {
     src: "/Marco con lona front copy 2.jpeg",
     alt: "Marco con lona front copy 2",
-    cat: "publica",
-    desc: "Marco con lona - frontal",
+    cat: "lonas",
+    desc: "Marco con lona - frontal (copy 2)",
   },
   {
     src: "/Marco con lona front copy.jpeg",
     alt: "Marco con lona front copy",
-    cat: "publica",
-    desc: "Marco con lona - frontal",
+    cat: "lonas",
+    desc: "Marco con lona - frontal (copy)",
   },
   {
     src: "/Marco con lona front.jpeg",
     alt: "Marco con lona front",
-    cat: "publica",
+    cat: "lonas",
     desc: "Marco con lona - frontal",
   },
   {
     src: "/marco con lona frontal 3.jpg",
     alt: "Marco con lona frontal 3",
-    cat: "publica",
-    desc: "Marco con lona - frontal",
+    cat: "lonas",
+    desc: "Marco con lona - frontal 3",
   },
   {
     src: "/Mini stand alone.jpg",
     alt: "Mini stand alone",
-    cat: "eventos",
+    cat: "stands",
     desc: "Mini Stand Alone - formato pequeño",
   },
   {
     src: "/Ploteo recorte.jpeg",
     alt: "Ploteo recorte",
-    cat: "retail",
+    cat: "stickers",
     desc: "Ploteo y recorte - vinilo personalizado",
   },
   {
     src: "/Sticker clear pegando por dentro.jpeg",
     alt: "Sticker clear pegando por dentro",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker clear - pegado por dentro",
   },
   {
     src: "/Sticker comun 2.jpeg",
     alt: "Sticker comun 2",
-    cat: "retail",
-    desc: "Sticker común",
+    cat: "stickers",
+    desc: "Sticker común - variante 2",
   },
   {
     src: "/Sticker comun en altura.jpeg",
     alt: "Sticker comun en altura",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker colocado en altura",
   },
   {
     src: "/Sticker comun nivel peatonal.jpeg",
     alt: "Sticker comun nivel peatonal",
-    cat: "retail",
+    cat: "stickers",
     desc: "Sticker a nivel peatonal",
   },
   {
     src: "/Sticker esquinera.jpeg",
     alt: "Sticker esquinera",
-    cat: "retail",
-    desc: "Sticker esquinera",
+    cat: "stickers",
+    desc: "Sticker esquinera - adaptación de esquina",
   },
   {
     src: "/Sticker microperforado 2.jpeg",
     alt: "Sticker microperforado 2",
-    cat: "retail",
-    desc: "Sticker microperforado",
+    cat: "stickers",
+    desc: "Sticker microperforado - variante 2",
   },
   {
     src: "/Sticker microperforado 3.jpeg",
     alt: "Sticker microperforado 3",
-    cat: "retail",
-    desc: "Sticker microperforado",
+    cat: "stickers",
+    desc: "Sticker microperforado - variante 3",
   },
 ];
 const TESTIMONIALS = [
@@ -278,6 +287,14 @@ const TESTIMONIALS = [
     name: "ExpoTech",
     text: "El tótem fue el centro de todas las miradas en nuestro evento.",
   },
+];
+
+const FILTER_CATEGORIES = [
+  { label: "Todos", key: null },
+  { label: "Stickers", key: "stickers" },
+  { label: "Cercos de Obra", key: "cercos" },
+  { label: "Lonas y Marcos", key: "lonas" },
+  { label: "Stands y Tótems", key: "stands" },
 ];
 
 function scrollToId(id: string) {
@@ -296,6 +313,14 @@ export default function Index() {
     desc?: string;
     cat?: string;
   } | null>(null);
+
+  const filteredPortfolio = useMemo(() => {
+    let filtered = PORTFOLIO.filter((img) => !cat || img.cat === cat);
+    if (!showAll) {
+      filtered = filtered.slice(0, 8);
+    }
+    return filtered;
+  }, [showAll, cat]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -321,44 +346,71 @@ export default function Index() {
   return (
     <div className="font-sans bg-white text-black">
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full z-30 bg-white/90 border-b border-gray-200 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/80">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
+      <header className="fixed top-0 left-0 w-full z-50 bg-white/95 border-b border-gray-200 shadow-sm backdrop-blur-md supports-[backdrop-filter]:bg-white/90 transition-all duration-300">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
           <a
             href="#home"
-            className="flex items-center gap-2 font-bold text-xl tracking-tight text-black"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToId("home");
+            }}
+            className="flex items-center gap-3 font-bold text-xl tracking-tight text-black hover:opacity-80 transition-opacity"
           >
             <img
               src="/logo.png"
               alt="Round Indigo Rock"
-              className="h-10 w-auto transform scale-150 origin-center"
+              className="h-10 w-auto transform scale-125 origin-center"
             />
             <span className="sr-only">Round Indigo Rock</span>
           </a>
-          <nav className="hidden md:flex gap-4 text-sm font-medium">
-            <a href="#home" className="hover:text-indigo-600 transition-colors">
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("home");
+              }}
+              className="relative text-gray-700 hover:text-indigo-600 transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-200 hover:after:w-full"
+            >
               Home
             </a>
             <a
               href="#about"
-              className="hover:text-indigo-600 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("about");
+              }}
+              className="relative text-gray-700 hover:text-indigo-600 transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-200 hover:after:w-full"
             >
               Sobre nosotros
             </a>
             <a
               href="#servicios"
-              className="hover:text-indigo-600 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("servicios");
+              }}
+              className="relative text-gray-700 hover:text-indigo-600 transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-200 hover:after:w-full"
             >
               Servicios
             </a>
             <a
               href="#trabajos"
-              className="hover:text-indigo-600 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("trabajos");
+              }}
+              className="relative text-gray-700 hover:text-indigo-600 transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-200 hover:after:w-full"
             >
               Trabajos
             </a>
             <a
               href="#contacto"
-              className="hover:text-indigo-600 transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToId("contacto");
+              }}
+              className="relative text-gray-700 hover:text-indigo-600 transition-colors duration-200 after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-0.5 after:bg-indigo-600 after:transition-all after:duration-200 hover:after:w-full"
             >
               Contacto
             </a>
@@ -366,55 +418,82 @@ export default function Index() {
               href={WHATSAPP_LINK}
               target="_blank"
               rel="noopener"
-              className="text-green-600 hover:text-green-700 flex items-center gap-1"
+              className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium transition-colors duration-200 shadow-sm"
             >
-              <MessageCircle size={18} /> WhatsApp
+              <MessageCircle size={18} />
+              WhatsApp
             </a>
           </nav>
-          <button
-            className="md:hidden p-2 rounded hover:bg-gray-100"
-            aria-label="Abrir menú"
+          <Button
+            variant="ghost"
+            size="sm"
+            className="md:hidden"
             onClick={() => setMenuOpen((v) => !v)}
           >
-            {menuOpen ? <X /> : <Menu />}
-          </button>
+            {menuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+            <span className="sr-only">Toggle menu</span>
+          </Button>
         </div>
         {/* Mobile menu */}
         {menuOpen && (
-          <nav className="md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full left-0 top-full z-40 animate-in fade-in">
-            <div className="flex flex-col gap-2 p-4">
+          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg absolute w-full left-0 top-full z-40 animate-in slide-in-from-top-2 duration-200">
+            <nav className="flex flex-col gap-0 p-4 bg-white">
               <a
                 href="#home"
-                onClick={() => setMenuOpen(false)}
-                className="py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId("home");
+                  setMenuOpen(false);
+                }}
+                className="py-3 px-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
                 Home
               </a>
               <a
                 href="#about"
-                onClick={() => setMenuOpen(false)}
-                className="py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId("about");
+                  setMenuOpen(false);
+                }}
+                className="py-3 px-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
                 Sobre nosotros
               </a>
               <a
                 href="#servicios"
-                onClick={() => setMenuOpen(false)}
-                className="py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId("servicios");
+                  setMenuOpen(false);
+                }}
+                className="py-3 px-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
                 Servicios
               </a>
               <a
                 href="#trabajos"
-                onClick={() => setMenuOpen(false)}
-                className="py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId("trabajos");
+                  setMenuOpen(false);
+                }}
+                className="py-3 px-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
                 Trabajos
               </a>
               <a
                 href="#contacto"
-                onClick={() => setMenuOpen(false)}
-                className="py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToId("contacto");
+                  setMenuOpen(false);
+                }}
+                className="py-3 px-2 text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
                 Contacto
               </a>
@@ -422,19 +501,20 @@ export default function Index() {
                 href={WHATSAPP_LINK}
                 target="_blank"
                 rel="noopener"
-                className="py-2 text-green-600 flex items-center gap-1"
+                className="py-3 px-2 text-base font-medium text-green-600 hover:text-green-700 hover:bg-gray-50 rounded-md transition-colors duration-200 flex items-center gap-2"
               >
-                <MessageCircle size={18} /> WhatsApp
+                <MessageCircle size={18} />
+                WhatsApp
               </a>
-            </div>
-          </nav>
+            </nav>
+          </div>
         )}
       </header>
 
       {/* Hero */}
       <section
         id="home"
-        className="relative min-h-screen flex items-center justify-center bg-black"
+        className="relative h-screen flex items-center justify-center bg-black"
       >
         <img
           src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
@@ -447,7 +527,7 @@ export default function Index() {
           className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"
           aria-hidden="true"
         />
-        <div className="relative z-10 max-w-2xl mx-auto text-center px-4 py-24">
+        <div className="relative z-10 max-w-2xl mx-auto text-center px-4 py-16">
           {/* Logo centered above the main headline - place image in public/round-indigo-rock.png */}
           <img
             src="/logo.png"
@@ -562,35 +642,48 @@ export default function Index() {
           <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black text-center">
             Trabajos realizados
           </h2>
-          <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
-            {(showAll ? PORTFOLIO : PORTFOLIO.slice(0, 8))
-              .filter((img) => !cat || img.cat === cat)
-              .map((img, i) => (
-                <div
-                  key={i}
-                  className="relative mb-4 rounded-lg overflow-hidden shadow group cursor-pointer"
-                  tabIndex={0}
-                  aria-label={img.desc}
-                  onClick={() => setSelectedImage(img)}
-                  onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
-                    if (e.key === "Enter") setSelectedImage(img);
-                  }}
-                >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                    <span className="text-white text-sm font-medium">
-                      {img.desc}
-                    </span>
-                  </div>
-                </div>
-              ))}
+          <div className="flex flex-wrap justify-center items-center gap-2 mb-6">
+            {FILTER_CATEGORIES.map((filter) => (
+              <Button
+                key={filter.key || "all"}
+                variant={cat === filter.key ? "default" : "outline"}
+                className="px-4 py-2"
+                onClick={() => {
+                  setCat(filter.key);
+                  setShowAll(false);
+                }}
+              >
+                {filter.label}
+              </Button>
+            ))}
           </div>
-          {!showAll && (
+          <div className="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-4">
+            {filteredPortfolio.map((img, i) => (
+              <div
+                key={i}
+                className="relative mb-4 rounded-lg overflow-hidden shadow group cursor-pointer"
+                tabIndex={0}
+                aria-label={img.desc}
+                onClick={() => setSelectedImage(img)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+                  if (e.key === "Enter") setSelectedImage(img);
+                }}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                  <span className="text-white text-sm font-medium">
+                    {img.desc}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+          {!showAll && filteredPortfolio.length > 8 && (
             <div className="flex justify-center mt-6">
               <Button
                 className="bg-indigo-600 hover:bg-indigo-700 text-white shadow rounded-lg px-6 py-2"
@@ -615,15 +708,25 @@ export default function Index() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" ref={contactRef} className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black text-center">
-            Contacto
-          </h2>
-          <div className="flex flex-col md:flex-row gap-8">
+      <section
+        id="contacto"
+        ref={contactRef}
+        className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50"
+      >
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+              Contáctanos
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Estamos listos para ayudarte con tu proyecto. Envíanos un mensaje
+              y te respondemos en menos de 24hs.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
             {/* Formulario */}
             <form
-              className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex-1 flex flex-col gap-4"
+              className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 space-y-6"
               autoComplete="off"
               onSubmit={(e) => {
                 e.preventDefault();
@@ -631,101 +734,143 @@ export default function Index() {
               }}
               aria-label="Formulario de contacto"
             >
-              <label className="font-medium text-sm" htmlFor="nombre">
-                Nombre
-              </label>
-              <input
-                id="nombre"
-                name="nombre"
-                type="text"
-                required
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                autoComplete="name"
-              />
-              <label className="font-medium text-sm" htmlFor="email">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                autoComplete="email"
-              />
-              <label className="font-medium text-sm" htmlFor="telefono">
-                Teléfono/WhatsApp
-              </label>
-              <input
-                id="telefono"
-                name="telefono"
-                type="tel"
-                required
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                autoComplete="tel"
-              />
-              <label className="font-medium text-sm" htmlFor="mensaje">
-                Mensaje (medidas, tipo de pieza, etc.)
-              </label>
-              <textarea
-                id="mensaje"
-                name="mensaje"
-                required
-                rows={3}
-                className="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              />
+              <div>
+                <Label
+                  htmlFor="nombre"
+                  className="text-sm font-medium mb-2 block"
+                >
+                  Nombre completo
+                </Label>
+                <Input
+                  id="nombre"
+                  name="nombre"
+                  type="text"
+                  required
+                  placeholder="Tu nombre"
+                  className="w-full"
+                  autoComplete="name"
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-medium mb-2 block"
+                >
+                  Email
+                </Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="tu@email.com"
+                  className="w-full"
+                  autoComplete="email"
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="telefono"
+                  className="text-sm font-medium mb-2 block"
+                >
+                  Teléfono / WhatsApp
+                </Label>
+                <Input
+                  id="telefono"
+                  name="telefono"
+                  type="tel"
+                  required
+                  placeholder="+54 9 11 XXXX XXXX"
+                  className="w-full"
+                  autoComplete="tel"
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="mensaje"
+                  className="text-sm font-medium mb-2 block"
+                >
+                  Mensaje (medidas, tipo de pieza, etc.)
+                </Label>
+                <Textarea
+                  id="mensaje"
+                  name="mensaje"
+                  required
+                  placeholder="Describe tu proyecto..."
+                  rows={4}
+                  className="w-full resize-none"
+                />
+              </div>
               <Button
                 type="submit"
-                className="bg-indigo-600 hover:bg-indigo-700 text-white shadow rounded-lg px-6 py-2 mt-2"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl"
               >
                 Solicitar propuesta
               </Button>
-              <span className="text-xs text-gray-500 mt-2">
+              <p className="text-xs text-gray-500 text-center">
                 * Tus datos serán usados solo para responder tu consulta. No
                 compartimos información con terceros.
-              </span>
+              </p>
             </form>
             {/* Datos de contacto */}
-            <div className="flex-1 p-6 flex flex-col gap-8 justify-center">
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <Phone className="text-indigo-600" size={28} />
-                <a
-                  href={WHATSAPP_LINK}
-                  target="_blank"
-                  rel="noopener"
-                  className="text-lg text-green-600 hover:underline"
-                >
-                  WhatsApp: +54 9 11 2722 7731
-                </a>
+            <div className="space-y-4">
+              <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 flex items-center gap-4 hover:shadow-lg transition-shadow">
+                <Phone className="text-indigo-600" size={20} />
+                <div>
+                  <a
+                    href={WHATSAPP_LINK}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-lg font-medium text-green-600 hover:underline block"
+                  >
+                    WhatsApp: +54 9 11 2722 7731
+                  </a>
+                  <p className="text-sm text-gray-500">
+                    Llamanos o enviá un mensaje
+                  </p>
+                </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <Mail className="text-indigo-600" size={28} />
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="text-lg text-indigo-600 hover:underline"
-                >
-                  {EMAIL}
-                </a>
+              <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 flex items-center gap-4 hover:shadow-lg transition-shadow">
+                <Mail className="text-indigo-600" size={20} />
+                <div>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="text-lg font-medium text-indigo-600 hover:underline block"
+                  >
+                    {EMAIL}
+                  </a>
+                  <p className="text-sm text-gray-500">Envianos un email</p>
+                </div>
               </div>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <svg
-                  width="28"
-                  height="28"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="text-indigo-600"
-                  aria-hidden="true"
-                >
-                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1 2.2-2.2 4.6-2.2 4.9 0 5.8 3.2 5.8 7.3V24h-5V15.3c0-2.1 0-4.8-3-4.8-3 0-3.5 2.3-3.5 4.6V24h-5V8z" />
-                </svg>
-                <a
-                  href="https://www.linkedin.com/in/cai-von-m%C3%BChlen-3b55bb11/"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-lg text-indigo-600 hover:underline"
-                >
-                  LinkedIn
-                </a>
+              <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 flex items-center gap-4 hover:shadow-lg transition-shadow">
+                <Linkedin className="text-indigo-600" size={20} />
+                <div>
+                  <a
+                    href="https://www.linkedin.com/in/cai-von-m%C3%Bhlen-3b55bb11/"
+                    target="_blank"
+                    rel="noopener"
+                    className="text-lg font-medium text-indigo-600 hover:underline block"
+                  >
+                    LinkedIn
+                  </a>
+                  <p className="text-sm text-gray-500">
+                    Conectemos profesionalmente
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-md border border-gray-200 p-4 flex items-center gap-4 hover:shadow-lg transition-shadow">
+                <Instagram className="text-indigo-600" size={20} />
+                <div>
+                  <a
+                    href={INSTAGRAM_LINK}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-lg font-medium text-indigo-600 hover:underline block"
+                  >
+                    Instagram
+                  </a>
+                  <p className="text-sm text-gray-500">@roundindigorock</p>
+                </div>
               </div>
             </div>
           </div>
@@ -733,61 +878,119 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-8 px-4">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
-            <div className="font-bold text-lg mb-2">Round Indigo Rock</div>
-            <div className="text-sm mb-1">Lunes a Viernes 9 a 18hs</div>
-            <div className="flex gap-3 mt-2">
-              <a
-                href={WHATSAPP_LINK}
-                target="_blank"
-                rel="noopener"
-                aria-label="WhatsApp"
-                className="hover:text-green-400"
-              >
-                <MessageCircle />
-              </a>
-              <a
-                href={`mailto:${EMAIL}`}
-                aria-label="Email"
-                className="hover:text-indigo-400"
-              >
-                <Mail />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/cai-von-m%C3%BChlen-3b55bb11/"
-                target="_blank"
-                rel="noopener"
-                aria-label="LinkedIn"
-                className="hover:text-indigo-300"
-              >
-                <svg
-                  width="22"
-                  height="22"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+      <footer className="bg-gray-900 text-white py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Company Info */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <img
+                  src="/logo.png"
+                  alt="Round Indigo Rock"
+                  className="h-8 w-auto"
+                />
+                <span className="font-bold text-lg">Round Indigo Rock</span>
+              </div>
+              <p className="text-sm text-gray-300">
+                Más de 17 años creando soluciones OOH que destacan tu marca.
+              </p>
+              <p className="text-sm text-gray-400">Lunes a Viernes 9 a 18hs</p>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-semibold mb-4 text-white">Enlaces rápidos</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li>
+                  <a
+                    href="#home"
+                    className="hover:text-indigo-400 transition-colors"
+                  >
+                    Inicio
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#servicios"
+                    className="hover:text-indigo-400 transition-colors"
+                  >
+                    Servicios
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#trabajos"
+                    className="hover:text-indigo-400 transition-colors"
+                  >
+                    Trabajos
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contacto"
+                    className="hover:text-indigo-400 transition-colors"
+                  >
+                    Contacto
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Social & Contact */}
+            <div className="space-y-4">
+              <h4 className="font-semibold mb-4 text-white">Conéctate</h4>
+              <div className="flex gap-4 mb-4">
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="WhatsApp"
+                  className="p-2 bg-green-600 hover:bg-green-700 rounded-lg transition-colors"
                 >
-                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1 2.2-2.2 4.6-2.2 4.9 0 5.8 3.2 5.8 7.3V24h-5V15.3c0-2.1 0-4.8-3-4.8-3 0-3.5 2.3-3.5 4.6V24h-5V8z" />
-                </svg>
-              </a>
+                  <MessageCircle size={20} />
+                </a>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  aria-label="Email"
+                  className="p-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors"
+                >
+                  <Mail size={20} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/cai-von-m%C3%Bhlen-3b55bb11/"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="LinkedIn"
+                  className="p-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors"
+                >
+                  <Linkedin size={20} />
+                </a>
+                <a
+                  href={INSTAGRAM_LINK}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram"
+                  className="p-2 bg-pink-600 hover:bg-pink-700 rounded-lg transition-colors"
+                >
+                  <Instagram size={20} />
+                </a>
+              </div>
+              <p className="text-sm text-gray-400">
+                ¿Proyecto urgente?{" "}
+                <a
+                  href={WHATSAPP_LINK}
+                  className="text-indigo-400 underline font-semibold hover:text-indigo-300"
+                >
+                  Escribinos por WhatsApp
+                </a>
+              </p>
             </div>
           </div>
-          <div className="text-center md:text-right">
-            <div className="mb-2">
-              ¿Proyecto urgente?{" "}
-              <a
-                href={WHATSAPP_LINK}
-                className="text-indigo-400 underline font-semibold"
-              >
-                Escribinos por WhatsApp
-              </a>
-            </div>
-            <div className="text-xs text-gray-400">
-              © {new Date().getFullYear()} Round Indigo Rock. Todos los derechos
-              reservados.
-            </div>
+
+          {/* Copyright */}
+          <div className="border-t border-gray-800 pt-6 text-center text-sm text-gray-400">
+            © {new Date().getFullYear()} Round Indigo Rock. Todos los derechos
+            reservados.
           </div>
         </div>
       </footer>

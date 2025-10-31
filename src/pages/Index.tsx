@@ -69,11 +69,6 @@ const SERVICES = [
   {
     icon: FileText,
     title: "Flyers",
-    bullets: ["Papeles de calidad", "Colores vibrantes", "Entrega rápida"],
-  },
-  {
-    icon: InspectionPanel,
-    title: "Folletos",
     bullets: [
       "Diferentes pliegos",
       "Acabados brillantes/mate",
@@ -171,6 +166,102 @@ const PORTFOLIO = [
     alt: "Totem doble faz",
     cat: "publica",
     desc: "Tótem doble faz - alto impacto",
+  },
+  {
+    src: "/Cerco de obra.jpeg",
+    alt: "Cerco de obra",
+    cat: "publica",
+    desc: "Cerco de obra - otra toma",
+  },
+  {
+    src: "/Marco con lona atado con tensores.jpg",
+    alt: "Marco con lona atado con tensores",
+    cat: "publica",
+    desc: "Marco con lona atado con tensores - montaje",
+  },
+  {
+    src: "/Marco con lona en altura.jpeg",
+    alt: "Marco con lona en altura",
+    cat: "publica",
+    desc: "Marco con lona en altura - instalación",
+  },
+  {
+    src: "/Marco con lona front copy 2.jpeg",
+    alt: "Marco con lona front copy 2",
+    cat: "publica",
+    desc: "Marco con lona - frontal (copy 2)",
+  },
+  {
+    src: "/Marco con lona front copy.jpeg",
+    alt: "Marco con lona front copy",
+    cat: "publica",
+    desc: "Marco con lona - frontal (copy)",
+  },
+  {
+    src: "/Marco con lona front.jpeg",
+    alt: "Marco con lona front",
+    cat: "publica",
+    desc: "Marco con lona - frontal",
+  },
+  {
+    src: "/marco con lona frontal 3.jpg",
+    alt: "Marco con lona frontal 3",
+    cat: "publica",
+    desc: "Marco con lona - frontal 3",
+  },
+  {
+    src: "/Mini stand alone.jpg",
+    alt: "Mini stand alone",
+    cat: "eventos",
+    desc: "Mini Stand Alone - formato pequeño",
+  },
+  {
+    src: "/Ploteo recorte.jpeg",
+    alt: "Ploteo recorte",
+    cat: "retail",
+    desc: "Ploteo y recorte - vinilo personalizado",
+  },
+  {
+    src: "/Sticker clear pegando por dentro.jpeg",
+    alt: "Sticker clear pegando por dentro",
+    cat: "retail",
+    desc: "Sticker clear - pegado por dentro",
+  },
+  {
+    src: "/Sticker comun 2.jpeg",
+    alt: "Sticker comun 2",
+    cat: "retail",
+    desc: "Sticker común",
+  },
+  {
+    src: "/Sticker comun en altura.jpeg",
+    alt: "Sticker comun en altura",
+    cat: "retail",
+    desc: "Sticker colocado en altura",
+  },
+  {
+    src: "/Sticker comun nivel peatonal.jpeg",
+    alt: "Sticker comun nivel peatonal",
+    cat: "retail",
+    desc: "Sticker a nivel peatonal",
+  },
+  {
+    src: "/Sticker esquinera.jpeg",
+    alt: "Sticker esquinera",
+    cat: "retail",
+    desc: "Sticker esquinera",
+  },
+  {
+    src: "/Sticker microperforado 2.jpeg",
+    alt: "Sticker microperforado 2",
+    cat: "retail",
+    desc: "Sticker microperforado",
+  },
+  {
+    src: "/Sticker microperforado 3.jpeg",
+    alt: "Sticker microperforado 3",
+    cat: "retail",
+    desc: "Sticker microperforado",
   },
 ];
 const TESTIMONIALS = [
@@ -393,8 +484,8 @@ export default function Index() {
             Sobre nosotros
           </h2>
           <p className="text-lg text-gray-700 mb-6">
-            Más de 10 años de experiencia en impresión y montaje OOH. Entregas
-            rápidas, instalación segura y cobertura en CABA. Nos eligen por
+            Más de 17 años de experiencia en impresión y montaje OOH. Entregas
+            rápidas, instalación segura y cobertura en AMBA. Nos eligen por
             nuestra atención personalizada y resultados que destacan.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">

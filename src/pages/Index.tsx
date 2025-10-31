@@ -31,6 +31,7 @@ import {
   Instagram,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "@/hooks/use-toast";
 
 const INDIGO = "indigo-600";
 const INDIGO_HOVER = "indigo-700";
@@ -307,6 +308,7 @@ export default function Index() {
   const [cat, setCat] = useState<string | null>(null);
   const [showAll, setShowAll] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
+  const [sending, setSending] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{
     src: string;
     alt?: string;
@@ -342,6 +344,51 @@ export default function Index() {
 
   // Responsive sticky WhatsApp
   const isMobile = window.innerWidth < 768;
+
+  async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    setSending(true);
+    const fd = new FormData(form);
+    const payload = {
+      name: fd.get("nombre")?.toString() || "",
+      email: fd.get("email")?.toString() || "",
+      phone: fd.get("telefono")?.toString() || "",
+      message: fd.get("mensaje")?.toString() || "",
+    };
+
+    try {
+      const res = await fetch(
+        "https://n8n.srv902299.hstgr.cloud/webhook/handle-form-submit",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (!res.ok) throw new Error("Request failed");
+      // success
+      form.reset();
+      toast({
+        title: "Mensaje enviado",
+        description: "Gracias — te contactamos pronto.",
+      });
+    } catch (err) {
+      console.error(err);
+      toast({
+        title: "Error",
+        description: "Error enviando el mensaje. Intenta de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <div className="font-sans bg-white text-black">
@@ -716,10 +763,10 @@ export default function Index() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-              Contáctanos
+              Contactanos
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Estamos listos para ayudarte con tu proyecto. Envíanos un mensaje
+              Estamos listos para ayudarte con tu proyecto. Envaanos un mensaje
               y te respondemos en menos de 24hs.
             </p>
           </div>
@@ -728,10 +775,7 @@ export default function Index() {
             <form
               className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6 md:p-8 space-y-6"
               autoComplete="off"
-              onSubmit={(e) => {
-                e.preventDefault();
-                window.open(WHATSAPP_LINK, "_blank");
-              }}
+              onSubmit={handleContactSubmit}
               aria-label="Formulario de contacto"
             >
               <div>
@@ -804,8 +848,10 @@ export default function Index() {
               <Button
                 type="submit"
                 className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl"
+                disabled={sending}
+                aria-busy={sending}
               >
-                Solicitar propuesta
+                {sending ? "Enviando..." : "Solicitar propuesta"}
               </Button>
               <p className="text-xs text-gray-500 text-center">
                 * Tus datos serán usados solo para responder tu consulta. No
@@ -938,7 +984,7 @@ export default function Index() {
 
             {/* Social & Contact */}
             <div className="space-y-4">
-              <h4 className="font-semibold mb-4 text-white">Conéctate</h4>
+              <h4 className="font-semibold mb-4 text-white">Conectate</h4>
               <div className="flex gap-4 mb-4">
                 <a
                   href={WHATSAPP_LINK}

@@ -76,6 +76,7 @@ const SERVICES = [
     ],
   },
 ];
+
 const PORTFOLIO = [
   {
     src: "/2 stickers comun de 400x200cm c_u.jpg",
@@ -189,13 +190,13 @@ const PORTFOLIO = [
     src: "/Marco con lona front copy 2.jpeg",
     alt: "Marco con lona front copy 2",
     cat: "publica",
-    desc: "Marco con lona - frontal (copy 2)",
+    desc: "Marco con lona - frontal",
   },
   {
     src: "/Marco con lona front copy.jpeg",
     alt: "Marco con lona front copy",
     cat: "publica",
-    desc: "Marco con lona - frontal (copy)",
+    desc: "Marco con lona - frontal",
   },
   {
     src: "/Marco con lona front.jpeg",
@@ -207,7 +208,7 @@ const PORTFOLIO = [
     src: "/marco con lona frontal 3.jpg",
     alt: "Marco con lona frontal 3",
     cat: "publica",
-    desc: "Marco con lona - frontal 3",
+    desc: "Marco con lona - frontal",
   },
   {
     src: "/Mini stand alone.jpg",

@@ -892,7 +892,7 @@ export default function Index() {
                 <Linkedin className="text-indigo-600" size={20} />
                 <div>
                   <a
-                    href="https://www.linkedin.com/in/cai-von-m%C3%Bhlen-3b55bb11/"
+                    href="https://www.linkedin.com/in/cai-von-mühlen-3b55bb11/"
                     target="_blank"
                     rel="noopener"
                     className="text-lg font-medium text-indigo-600 hover:underline block"
@@ -1003,7 +1003,7 @@ export default function Index() {
                   <Mail size={20} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/cai-von-m%C3%Bhlen-3b55bb11/"
+                  href="https://www.linkedin.com/in/cai-von-mühlen-3b55bb11/"
                   target="_blank"
                   rel="noopener"
                   aria-label="LinkedIn"

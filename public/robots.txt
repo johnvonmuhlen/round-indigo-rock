@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap - replace with your production URL
+Sitemap: https://roundindigorock.vercel.app/sitemap.xml

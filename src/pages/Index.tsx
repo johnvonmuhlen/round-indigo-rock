@@ -766,7 +766,7 @@ export default function Index() {
               Contactanos
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Estamos listos para ayudarte con tu proyecto. Envaanos un mensaje
+              Estamos listos para ayudarte con tu proyecto. Envianos un mensaje
               y te respondemos en menos de 24hs.
             </p>
           </div>

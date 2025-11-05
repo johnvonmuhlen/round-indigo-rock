@@ -277,7 +277,7 @@ const PORTFOLIO = [
   {
     src: "/cartel de poste doble faz.jpg",
     alt: "Cartel de poste doble faz",
-    cat: "stickers",
+    cat: "stands",
     desc: "Cartel de poste doble faz",
   },
 ];

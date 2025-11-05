@@ -275,7 +275,7 @@ const PORTFOLIO = [
     desc: "Sticker microperforado",
   },
   {
-    src: "/cartel de poste doble faz.jpg",
+    src: "/cartel de poste doble faz.jpeg",
     alt: "Cartel de poste doble faz",
     cat: "stands",
     desc: "Cartel de poste doble faz",

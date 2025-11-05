@@ -275,7 +275,9 @@ const PORTFOLIO = [
     desc: "Sticker microperforado",
   },
   {
-    src: "/cartel de poste doble faz.jpeg",
+    // filename on disk contains a non-breaking space between "doble" and "faz"
+    // encode it with a Unicode escape so the string matches the actual file name
+    src: "/cartel de poste doble\u00A0faz.jpeg",
     alt: "Cartel de poste doble faz",
     cat: "stands",
     desc: "Cartel de poste doble faz",

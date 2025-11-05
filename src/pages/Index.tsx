@@ -200,13 +200,13 @@ const PORTFOLIO = [
     src: "/Marco con lona front copy 2.jpeg",
     alt: "Marco con lona front copy 2",
     cat: "lonas",
-    desc: "Marco con lona - frontal (copy 2)",
+    desc: "Marco con lona - frontal",
   },
   {
     src: "/Marco con lona front copy.jpeg",
     alt: "Marco con lona front copy",
     cat: "lonas",
-    desc: "Marco con lona - frontal (copy)",
+    desc: "Marco con lona - frontal",
   },
   {
     src: "/Marco con lona front.jpeg",
@@ -218,7 +218,7 @@ const PORTFOLIO = [
     src: "/marco con lona frontal 3.jpg",
     alt: "Marco con lona frontal 3",
     cat: "lonas",
-    desc: "Marco con lona - frontal 3",
+    desc: "Marco con lona - frontal",
   },
   {
     src: "/Mini stand alone.jpg",
@@ -242,7 +242,7 @@ const PORTFOLIO = [
     src: "/Sticker comun 2.jpeg",
     alt: "Sticker comun 2",
     cat: "stickers",
-    desc: "Sticker común - variante 2",
+    desc: "Sticker común",
   },
   {
     src: "/Sticker comun en altura.jpeg",
@@ -266,13 +266,19 @@ const PORTFOLIO = [
     src: "/Sticker microperforado 2.jpeg",
     alt: "Sticker microperforado 2",
     cat: "stickers",
-    desc: "Sticker microperforado - variante 2",
+    desc: "Sticker microperforado",
   },
   {
     src: "/Sticker microperforado 3.jpeg",
     alt: "Sticker microperforado 3",
     cat: "stickers",
-    desc: "Sticker microperforado - variante 3",
+    desc: "Sticker microperforado",
+  },
+  {
+    src: "/cartel de poste doble faz.jpg",
+    alt: "Cartel de poste doble faz",
+    cat: "stickers",
+    desc: "Cartel de poste doble faz",
   },
 ];
 const TESTIMONIALS = [

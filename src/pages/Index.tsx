@@ -341,13 +341,12 @@ export default function Index() {
   }, [selectedImage]);
 
   // SEO meta tags
-  document.title =
-    "Impresión e instalación OOH | Round Indigo Rock | Buenos Aires";
+  document.title = "Impresión e instalación OOH | Round Indigo Rock | AMBA";
   document
     .querySelector('meta[name="description"]')
     ?.setAttribute(
       "content",
-      "Servicios de impresión, instalación OOH, carteles, stickers, cercos de obra, tótems, flyers, folletos y desarrollo web en Buenos Aires. Cobertura en CABA. Round Indigo Rock."
+      "Servicios de impresión, instalación OOH, carteles, stickers, cercos de obra, tótems y flyers. Cobertura en AMBA. Round Indigo Rock."
     );
 
   // Responsive sticky WhatsApp
@@ -593,7 +592,7 @@ export default function Index() {
             Impresión e instalación OOH que destaca tu marca en la calle
           </h1>
           <p className="text-lg md:text-2xl text-white/90 mb-8 font-medium">
-            Carteles, stickers, cercos de obra, tótems, flyers y folletos.
+            Carteles, stickers, cercos de obra, tótems y flyers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

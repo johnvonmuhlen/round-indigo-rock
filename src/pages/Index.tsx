@@ -665,11 +665,11 @@ export default function Index() {
           <h2 className="text-2xl md:text-3xl font-bold mb-10 text-black text-center">
             Nuestros servicios
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {SERVICES.map((s) => (
               <div
                 key={s.title}
-                className="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center hover:shadow-lg transition-shadow"
+                className="w-80 bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center hover:shadow-lg transition-shadow"
               >
                 <s.icon
                   className="text-indigo-600 mb-3"
